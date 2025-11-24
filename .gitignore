@@ -1,0 +1,4 @@
+*.dll
+*.jar
+*.class
+*/.settings/*
