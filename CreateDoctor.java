@@ -40,6 +40,7 @@ public class CreateDoctor extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+<<<<<<< HEAD
 	doGet(request, response);
 	PrintWriter out = response.getWriter();
 	
@@ -97,6 +98,19 @@ public class CreateDoctor extends HttpServlet {
 	try {
 		Connection c = GetConnection.getConnection();
 		String joindate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+=======
+		doGet(request, response);
+		PrintWriter out = response.getWriter();
+		try {
+			Connection c = GetConnection.getConnection();
+			String  name = request.getParameter("name");
+			String  email = request.getParameter("email");
+			String  phone = request.getParameter("phone");
+			String  age = request.getParameter("age");
+			String joindate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+			String  sal = request.getParameter("sal");
+			String  spec = request.getParameter("spec");
+>>>>>>> 097da98d41bf87d6e4bf7a3701e59bea6a3a0510
 			String patients = "-1";    // initial is -1 always for every doctor
 			String sql = "insert into doctor(name,email,phone,age,joindate,salary,specialist,patients) values(?,?,?,?,?,?,?,?)";
 	

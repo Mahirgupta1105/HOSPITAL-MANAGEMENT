@@ -39,6 +39,7 @@ public class CreatePatient extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD
 	doGet(request, response);
 	PrintWriter out = response.getWriter();
 	
@@ -98,6 +99,22 @@ public class CreatePatient extends HttpServlet {
 	
 	Connection c = GetConnection.getConnection();
 	String visited = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+=======
+		doGet(request, response);
+		PrintWriter out = response.getWriter();
+		Connection c = GetConnection.getConnection();
+		int successCount = 0;
+		String  name = request.getParameter("name");
+		String  email = request.getParameter("email");
+		String  phone = request.getParameter("phone");
+		String  age = request.getParameter("age");
+		String  gender = request.getParameter("gender");
+		String  blood = request.getParameter("blood");
+		String visited = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		String  symptom = request.getParameter("symptom");
+		String  disease = request.getParameter("disease");
+		String doctor = request.getParameter("doctor");
+>>>>>>> 097da98d41bf87d6e4bf7a3701e59bea6a3a0510
 		try {
 			String sql = "insert into patient(name,email,phone,age,gender,blood,visited,symptom,disease,doctor) values(?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = c.prepareStatement(sql);
@@ -118,6 +135,7 @@ public class CreatePatient extends HttpServlet {
 			catch (SQLException e) { 
 				e.printStackTrace();
 			}
+<<<<<<< HEAD
 	// Use try-with-resources for proper resource management
 	try {
 				// Use PreparedStatement to prevent SQL injection
@@ -150,6 +168,29 @@ public class CreatePatient extends HttpServlet {
 						}
 					}
 				}
+=======
+		try {
+				String sql1 = "select patients from doctor where did = "+doctor;
+				Statement s = c.createStatement();
+				ResultSet r = s.executeQuery(sql1);
+				r.next();
+				String patients = r.getString("patients");
+				
+				PreparedStatement s2 = c.prepareStatement("select pid from patient where email = ?");
+				s2.setString(1, email);
+				ResultSet r2 = s2.executeQuery();
+				r2.next();
+				String pid = r2.getString("pid");
+				String newPat = new StringBuilder().append(patients).append(",").append(pid).toString();
+				
+				
+				PreparedStatement s3 = c.prepareStatement("update doctor set patients = ? where did = ?");
+				s3.setString(1, newPat);
+				s3.setInt(2, Integer.valueOf(doctor));
+				s3.executeUpdate();
+				response.setContentType("text/html");  
+				out.println("<br><br><br><h1 align=center><font color=\"green\">SUCCESSFUL<br></font></h1>");
+>>>>>>> 097da98d41bf87d6e4bf7a3701e59bea6a3a0510
 			} catch (SQLException e) { 
 				e.printStackTrace();
 				response.setContentType("text/html");  

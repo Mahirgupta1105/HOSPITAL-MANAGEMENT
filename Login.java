@@ -51,6 +51,7 @@ public class Login extends HttpServlet {
 		try {
 			ps = c.prepareStatement(checkUserSql);
 			ps.setString(1,email);
+<<<<<<< HEAD
 			ResultSet rs = ps.executeQuery();
 			
 			// Verify password using secure hashing
@@ -87,6 +88,24 @@ public class Login extends HttpServlet {
 				out.println("redirectURL = \"login.html\";setTimeout(\"location.href = redirectURL;\",\"5000\");");  
 				out.println("</script>");
 			}
+=======
+			ps.addBatch();
+			ResultSet rs = ps.executeQuery();
+			if(rs.next() && rs.getString("password").equals(pwd)){
+				HttpSession session = request.getSession();
+				session.setAttribute("name", rs.getString("name"));
+				session.setAttribute("aid", rs.getInt("aid"));
+				response.sendRedirect("welcome.html");
+			}
+			else{
+				  
+				response.setContentType("text/html");  
+				out.println("<br><br><br><h1 align=center><font color=\"red\">TRY AGAIN<br>REDIRECTING YOU TO LOGING PAGE</font></h1><script type=\"text/javascript\">");  
+				out.println("redirectURL = \"login.html\";setTimeout(\"location.href = redirectURL;\",\"5000\");");  
+				out.println("</script>");
+			}
+			ps.clearBatch();
+>>>>>>> 097da98d41bf87d6e4bf7a3701e59bea6a3a0510
 		} catch (SQLException e) {
 			response.setContentType("text/html");  
 			out.println("<br><br><br><h1 align=center><font color=\"red\">TRY AGAIN<br>REDIRECTING YOU TO LOGING PAGE</font></h1><script type=\"text/javascript\">");  

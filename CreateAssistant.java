@@ -42,6 +42,7 @@ public class CreateAssistant extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 		
+<<<<<<< HEAD
 	String name = request.getParameter("name");
 	String email =  request.getParameter("email");
 	String phone = request.getParameter("phone");
@@ -73,6 +74,25 @@ public class CreateAssistant extends HttpServlet {
 	ps.setString(4,joindate);
 	ps.setString(5,hashedPassword);  // Store hashed password
 	ps.addBatch();
+=======
+		String name = request.getParameter("name");
+		String email =  request.getParameter("email");
+		String phone = request.getParameter("phone");
+		String pwd =  request.getParameter("pwd");
+		String joindate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		PrintWriter out = response.getWriter();
+		Connection c;
+		try {
+		c = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital","root","root");	
+		String sql = "insert into assistant(name,email,phone,joindate,password) values(?,?,?,?,?)";
+		PreparedStatement ps = c.prepareStatement(sql);
+		ps.setString(1,name);
+		ps.setString(2,email);
+		ps.setString(3,phone);
+		ps.setString(4,joindate);
+		ps.setString(5,pwd);
+		ps.addBatch();
+>>>>>>> 097da98d41bf87d6e4bf7a3701e59bea6a3a0510
 
 		// Executing SQL
 		int successCount = 0;

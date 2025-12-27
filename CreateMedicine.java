@@ -39,6 +39,7 @@ public class CreateMedicine extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD
 	doGet(request, response);
 	PrintWriter out = response.getWriter();
 	
@@ -71,6 +72,16 @@ public class CreateMedicine extends HttpServlet {
 	
 	try {
 		Connection c = GetConnection.getConnection();
+=======
+		doGet(request, response);
+		PrintWriter out = response.getWriter();
+		try {
+			
+			Connection c = GetConnection.getConnection();
+			String  name = request.getParameter("name");
+			String  price = request.getParameter("price");
+			String  count = request.getParameter("count");
+>>>>>>> 097da98d41bf87d6e4bf7a3701e59bea6a3a0510
 			
 			String sql = "insert into medicine(name,price,count) values(?,?,?)";
 			

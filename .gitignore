@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Compiled files
 *.dll
 *.jar
@@ -21,3 +22,9 @@ out/
 # Logs
 *.log
 logs/
+=======
+*.dll
+*.jar
+*.class
+*/.settings/*
+>>>>>>> 097da98d41bf87d6e4bf7a3701e59bea6a3a0510

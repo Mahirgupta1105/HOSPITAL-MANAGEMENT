@@ -2,6 +2,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+<<<<<<< HEAD
 /**
  * Database connection manager
  * Uses DatabaseConfig for secure configuration management
@@ -56,4 +57,25 @@ public class GetConnection {
 			}
 		}
 	}
+=======
+public class GetConnection {
+	public static Connection c = null;
+	private GetConnection()
+	{
+		
+	}
+	public static Connection getConnection(){
+		if(c == null) {
+			try {
+				c = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital","root","root");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return c;
+		}else {
+			return c;	
+		}
+	}
+
+>>>>>>> 097da98d41bf87d6e4bf7a3701e59bea6a3a0510
 }
