@@ -1,0 +1,23 @@
+# Compiled files
+*.dll
+*.jar
+*.class
+
+# IDE settings
+*/.settings/*
+.project
+.classpath
+.idea/
+*.iml
+
+# Configuration files with sensitive data
+db.properties
+
+# Build directories
+target/
+build/
+out/
+
+# Logs
+*.log
+logs/
